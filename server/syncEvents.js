@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { fetchEventsFromTicketmaster, saveEventsToDB } from '../src/services/eventsService.js';
-import { query } from './db.js';
+import { fetchEventsFromTicketmaster, saveEventsToDB } from '../src/services/eventsService.jsx';
+import { query } from './db.jsx';
 
 // Function to check last update time
 const getLastUpdateTime = async () => {
