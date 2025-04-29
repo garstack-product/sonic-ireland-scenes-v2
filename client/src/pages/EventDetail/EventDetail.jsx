@@ -2,7 +2,7 @@ import React from 'react';
 // pages/EventDetail/EventDetail.jsx
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getEventsFromDB } from '../../services/eventsService.js';
+import { getEventsFromDB } from '../../services/eventsService.cjs';
 import './EventDetail.css';
 
 export default function EventDetail() {

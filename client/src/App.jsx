@@ -1,35 +1,12 @@
-import React from 'react';
-// App.js
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home.jsx';
-import EventDetail from './pages/EventDetail/EventDetail.jsx';
-import { FavoritesProvider } from './context/FavoritesContext.jsx';
-//const Favorites = lazy(() => import('./pages/Favorites/Favorites.jsx'));
-//const EventDetail = lazy(() => import('./pages/EventDetail/EventDetail.jsx'));
+// client/src/App.jsx
+import React from 'react'
+import './App.css'
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-    <FavoritesProvider>
-    <Router>
-      <div className="app">
-        <Header />
-        <h1>Test Content - If you see this, React is working</h1>
-        <main>
-          <Routes>
-            <Route path="/favorites" element={
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Favorites />
-                </Suspense>
-            }/>
-            <Route path="/" element={<Home />} />
-            <Route path="/event/:id" element={<EventDetail />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-    </FavoritesProvider>
-    </BrowserRouter>
-  );
+    <div style={{ padding: '2rem', backgroundColor: '#f0f0f0' }}>
+      <h1 style={{ color: 'red' }}>TEST: App Component is Rendering</h1>
+      <p>If you see this, React is working</p>
+    </div>
+  )
 }
