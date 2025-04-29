@@ -1,0 +1,78 @@
+/* components/Header/Header.css */
+.header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .nav-menu ul {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-menu a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+  
+    .nav-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+  
+    .nav-menu.open {
+      max-height: 300px;
+      padding: 1rem 0;
+    }
+  
+    .nav-menu ul {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0 1rem;
+    }
+  
+    .nav-menu li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+  }
+  
+  /* Adjust event cards for mobile */
+  @media (max-width: 600px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+  }
