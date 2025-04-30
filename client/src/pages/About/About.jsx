@@ -1,6 +1,8 @@
 // src/pages/Home.js
 import React from 'react';
 import Layout from '../../components/Layout';
+import './../../components/PageLayout.css';
+
 
 
 const About = () => {

@@ -1,5 +1,6 @@
 // src/pages/Home/Home.jsx
 import './Home.css';
+import './../../components/PageLayout.css';
 
 const Home = () => {
   return (

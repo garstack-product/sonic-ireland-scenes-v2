@@ -1,6 +1,7 @@
 // src/components/Gallery/Gallery.jsx
 import React from 'react';
 import './Gallery.css'; // Import the CSS
+import '../components/PageLayout.css';
 
 const Gallery = ({ images }) => {
   return (

@@ -3,12 +3,18 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8; /* Light gray background */
+  background-color: #f8f8f8;
 }
 
-* {
+/* Makes content take full width */
+.content {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+/* Reset default body margin */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

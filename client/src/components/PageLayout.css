@@ -1,0 +1,13 @@
+/* src/components/PageLayout.css */
+.page-container {
+    width: 100%;
+    padding: 2rem;
+    background-color: white;
+    min-height: calc(100vh - 80px); /* Full height minus navbar */
+  }
+  
+  @media (min-width: 1200px) {
+    .page-container {
+      padding: 2rem calc((100vw - 1200px) / 2);
+    }
+  }

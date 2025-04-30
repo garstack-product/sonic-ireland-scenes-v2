@@ -1,5 +1,7 @@
 // src/pages/listings/Concerts.jsx
+import './../../components/PageLayout.css';
 import React from 'react';
+
 
 const Concerts = () => {
   return (

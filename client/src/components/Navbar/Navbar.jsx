@@ -15,6 +15,15 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setDropdown({
+      listings: false,
+      reviews: false
+    });
+  };
+
+
   const toggleDropdown = (menu) => {
     setDropdown(prev => ({
       ...prev,
@@ -121,12 +130,12 @@ const Navbar = () => {
 
           {/* Other Menu Items */}
           <li className="nav-item">
-            <Link to="/news" className="nav-links" onClick={closeMenu}>
+            <Link to="/news" className="nav-links" onClick={closeMobileMenu}>
               News
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/about" className="nav-links" onClick={closeMenu}>
+            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
               About
             </Link>
           </li>
