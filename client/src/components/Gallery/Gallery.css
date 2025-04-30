@@ -1,0 +1,49 @@
+/* src/components/Gallery/Gallery.css */
+.image-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 1.5rem; /* Added spacing */
+    overflow: hidden; /* For image corners */
+  }
+  
+  .image-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Image inside card */
+  .image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Card content */
+  .image-card-content {
+    padding: 1rem;
+  }
+  
+  /* Optional title style */
+  .image-card h3 {
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Optional description */
+  .image-card p {
+    color: #666666;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Add to Gallery.css */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }

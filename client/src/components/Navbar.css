@@ -1,0 +1,278 @@
+/* src/components/Navbar.css */
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  position: relative;
+}
+
+.navbar-logo {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu-icon {
+  display: none;
+  color: #000;
+  font-size: 1.8rem;
+  cursor: pointer;
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  margin-left: auto;
+}
+
+.nav-item {
+  height: 80px;
+}
+
+.nav-links {
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links:hover {
+  color: #666;
+}
+
+.nav-links:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 25px;
+  left: 50%;
+  background-color: #000;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links:hover:after {
+  width: 20px;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar-logo {
+    position: static;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+}
+
+
+/* Add these to your existing Navbar.css */
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Changed from top: 80px */
+    left: 0;
+    background: #fff;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 4px 4px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 999;
+  }
+  
+  .dropdown-item {
+    width: 100%;
+  }
+  
+  .dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-link:hover {
+    background-color: #f8f8f8;
+    color: #000;
+  }
+  
+  .logout-btn {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+  
+  /* Mobile Dropdown Styles */
+  @media screen and (max-width: 768px) {
+    .dropdown-menu {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      display: none;
+      margin-left: 20px; /* Add indentation */
+    }
+  
+    .nav-item.active .dropdown-menu {
+        display: block;
+      }
+
+    .dropdowns.listings .dropdown-menu,
+    .dropdowns.reviews .dropdown-menu,
+    .dropdowns.admin .dropdown-menu {
+      display: block;
+    }
+  
+    .dropdown-item {
+      padding: 0;
+    }
+  
+    .dropdown-link {
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+    }
+  }
+
+  .dropdown-menu {
+    transform-origin: top center;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-item.active .dropdown-menu,
+  .nav-item:hover .dropdown-menu {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  /* src/components/Navbar.css */
+.navbar {
+    background-color: #ffffff;
+    height: 80px;
+    border-bottom: 1px solid #e0e0e0; /* Added subtle border */
+  }
+  
+  .navbar-logo {
+    color: #1a1a1a;
+    font-weight: 600; /* Slightly bolder */
+  }
+  
+  .nav-links {
+    color: #333333;
+    font-weight: 500;
+  }
+  
+  .nav-links:hover {
+    color: #4a6fa5; /* Using the accent color */
+  }
+  
+  /* Dropdown menu */
+  .dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .dropdown-link {
+    color: #333333;
+  }
+  
+  .dropdown-link:hover {
+    background-color: #f8f8f8;
+    color: #4a6fa5;
+  }
+  
+  /* Active/hover states */
+  .nav-links:after {
+    background-color: #4a6fa5; /* Accent color for underline */
+  }
+  
+  /* Mobile menu */
+  @media screen and (max-width: 768px) {
+    .nav-menu {
+      background-color: #ffffff;
+    }
+    
+    .nav-links:hover {
+      background-color: #f8f8f8;
+    }
+  }

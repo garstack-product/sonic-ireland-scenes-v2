@@ -63,30 +63,35 @@ import './Home.css';
     if (loading) return <div className="loading">Loading events...</div>;
   
     return (
-      <div className="app">
-        <Header />
-        
-        <main className="main-content">
-          <div className="controls">
-            <FilterBar 
-              activeFilter={activeFilter} 
-              setActiveFilter={setActiveFilter} 
-            />
-            <SearchBar onSearch={handleSearch} />
-          </div>
-  
-          <div className="events-grid">
-            {filteredEvents.length > 0 ? (
-              filteredEvents.map(event => (
-                <EventCard key={event.event_id} event={event} />
-              ))
-            ) : (
-              <div className="no-events">
-                No events found matching your criteria
-              </div>
-            )}
-          </div>
-        </main>
-      </div>
+        <div className="home-container">
+            <div className="home-content">
+                <h1>Welcome to Sonic Ireland Scenes</h1>
+                    <div className="app">
+                        <Header />
+                        
+                        <main className="main-content">
+                        <div className="controls">
+                            <FilterBar 
+                            activeFilter={activeFilter} 
+                            setActiveFilter={setActiveFilter} 
+                            />
+                            <SearchBar onSearch={handleSearch} />
+                        </div>
+                
+                        <div className="events-grid">
+                            {filteredEvents.length > 0 ? (
+                            filteredEvents.map(event => (
+                                <EventCard key={event.event_id} event={event} />
+                            ))
+                            ) : (
+                            <div className="no-events">
+                                No events found matching your criteria
+                            </div>
+                            )}
+                        </div>
+                        </main>
+                    </div>
+            </div>
+        </div>
     );
   }

@@ -70,3 +70,24 @@ button:focus-visible {
   background: red !important;
   min-height: 100vh;
 }
+
+
+.nav-links {
+  position: relative;
+}
+
+.nav-links:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 25px;
+  left: 50%;
+  background-color: #000;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links:hover:after {
+  width: 20px;
+}
