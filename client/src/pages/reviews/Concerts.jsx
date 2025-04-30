@@ -1,7 +1,7 @@
 // src/pages/listings/Concerts.jsx
 import React from 'react';
 
-const Concerts = () => {
+const ReviewConcerts = () => {
   return (
     <div className="page-container">
       <h1>Concerts</h1>
@@ -10,4 +10,4 @@ const Concerts = () => {
   );
 };
 
-export default Concerts;
+export default ReviewConcerts;

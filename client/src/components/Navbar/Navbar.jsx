@@ -1,68 +1,89 @@
 // src/components/Navbar/Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
-  const [dropdowns, setDropdowns] = useState({
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdown, setDropdown] = useState({
     listings: false,
     reviews: false
   });
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
-  const toggleDropdown = (dropdown) => {
-    setDropdowns(prev => ({
+  const toggleDropdown = (menu) => {
+    setDropdown(prev => ({
       ...prev,
-      [dropdown]: !prev[dropdown]
+      [menu]: !prev[menu]
     }));
   };
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="menu-icon" onClick={handleClick}>
-          {click ? <FaTimes /> : <FaBars />}
+        {/* Mobile Menu Icon */}
+        <div className="menu-icon" onClick={toggleMenu}>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </div>
 
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+        {/* Logo */}
+        <Link to="/" className="navbar-logo" onClick={closeMenu}>
           Sonic Ireland Scenes
         </Link>
 
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+        {/* Desktop Menu */}
+        <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/" className="nav-links" onClick={closeMenu}>
               Home
             </Link>
           </li>
 
-          <li className="nav-item"
-            onClick={() => toggleDropdown('listings')}>
-            <div className="nav-links">
-              Listings {dropdowns.listings ? <FaChevronUp /> : <FaChevronDown />}
+          {/* Listings Dropdown */}
+          <li 
+            className="nav-item"
+            onMouseEnter={!isMobile ? () => toggleDropdown('listings') : undefined}
+            onMouseLeave={!isMobile ? () => toggleDropdown('listings') : undefined}
+          >
+            <div 
+              className="nav-links"
+              onClick={() => isMobile && toggleDropdown('listings')}
+            >
+              Listings {dropdown.listings ? <FaChevronUp /> : <FaChevronDown />}
             </div>
-            {dropdowns.listings && (
+            {dropdown.listings && (
               <ul className="dropdown-menu">
                 <li className="dropdown-item">
-                  <Link to="/listings/concerts" className="dropdown-link" onClick={closeMobileMenu}>
+                  <Link to="/listings/concerts" className="dropdown-link" onClick={closeMenu}>
                     Concerts
                   </Link>
                 </li>
                 <li className="dropdown-item">
-                  <Link to="/listings/festivals" className="dropdown-link" onClick={closeMobileMenu}>
+                  <Link to="/listings/festivals" className="dropdown-link" onClick={closeMenu}>
                     Festivals
                   </Link>
                 </li>
                 <li className="dropdown-item">
-                  <Link to="/listings/just-announced" className="dropdown-link" onClick={closeMobileMenu}>
+                  <Link to="/listings/just-announced" className="dropdown-link" onClick={closeMenu}>
                     Just Announced
                   </Link>
                 </li>
                 <li className="dropdown-item">
-                  <Link to="/listings/map" className="dropdown-link" onClick={closeMobileMenu}>
+                  <Link to="/listings/map" className="dropdown-link" onClick={closeMenu}>
                     Map
                   </Link>
                 </li>
@@ -70,16 +91,42 @@ const Navbar = () => {
             )}
           </li>
 
-          {/* Similar structure for Reviews dropdown */}
+          {/* Reviews Dropdown */}
+          <li 
+            className="nav-item"
+            onMouseEnter={!isMobile ? () => toggleDropdown('reviews') : undefined}
+            onMouseLeave={!isMobile ? () => toggleDropdown('reviews') : undefined}
+          >
+            <div 
+              className="nav-links"
+              onClick={() => isMobile && toggleDropdown('reviews')}
+            >
+              Reviews {dropdown.reviews ? <FaChevronUp /> : <FaChevronDown />}
+            </div>
+            {dropdown.reviews && (
+              <ul className="dropdown-menu">
+                <li className="dropdown-item">
+                  <Link to="/reviews/concerts" className="dropdown-link" onClick={closeMenu}>
+                    Concerts
+                  </Link>
+                </li>
+                <li className="dropdown-item">
+                  <Link to="/reviews/festivals" className="dropdown-link" onClick={closeMenu}>
+                    Festivals
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
 
+          {/* Other Menu Items */}
           <li className="nav-item">
-            <Link to="/news" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/news" className="nav-links" onClick={closeMenu}>
               News
             </Link>
           </li>
-
           <li className="nav-item">
-            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/about" className="nav-links" onClick={closeMenu}>
               About
             </Link>
           </li>

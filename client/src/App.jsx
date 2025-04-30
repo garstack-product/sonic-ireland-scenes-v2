@@ -1,15 +1,21 @@
 // src/App.js
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar.jsx';
-import Home from './pages/Home/Home.jsx';
-import Gallery from './pages/Gallery.jsx';
-import About from './pages/About.jsx';
-import News from './pages/News.jsx';
-import ListingsConcerts from './pages/listings/Concerts.jsx';
-import ListingsFestivals from './pages/listings/Festivals.jsx';
-import ListingsAnnounced from './pages/listings/JustAnnounced.jsx';
-import ListingsMap from './pages/listings/Map.jsx';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home/Home';
+import News from './pages/News/News';
+import About from './pages/About/About';
+
+// Listings imports
+import Concerts from './pages/listings/Concerts';
+import Festivals from './pages/listings/Festivals';
+import JustAnnounced from './pages/listings/JustAnnounced';
+import Map from './pages/listings/Map';
+
+// Reviews imports
+import ReviewConcerts from './pages/reviews/Concerts';
+import ReviewFestivals from './pages/reviews/Festivals';
+
+// Import all listing and review pages
 import './App.css';
 
 function App() {
@@ -17,18 +23,19 @@ function App() {
     <Router>
       <div className="app">
         <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/listings/concerts" element={<ListingsConcerts />} />
-            <Route path="/listings/festivals" element={<ListingsFestivals />} />
-            <Route path="/listings/just-announced" element={<ListingsAnnounced />} />
-            <Route path="/listings/map" element={<ListingsMap />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/about" element={<About />} />
+          {/* Listings Routes */}
+          <Route path="/listings/concerts" element={<Concerts />} />
+          <Route path="/listings/festivals" element={<Festivals />} />
+          <Route path="/listings/just-announced" element={<JustAnnounced />} />
+          <Route path="/listings/map" element={<Map />} />
+          {/* Reviews Routes */}
+          <Route path="/reviews/concerts" element={<ReviewConcerts />} />
+          <Route path="/reviews/festivals" element={<ReviewFestivals />} />
+        </Routes>
       </div>
     </Router>
   );

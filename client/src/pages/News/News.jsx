@@ -1,13 +1,13 @@
 // src/pages/listings/Concerts.jsx
 import React from 'react';
 
-const Concerts = () => {
+const News = () => {
   return (
     <div className="page-container">
-      <h1>Concerts</h1>
-      <p>Upcoming concert listings</p>
+      <h1>News</h1>
+      <p>News Items</p>
     </div>
   );
 };
 
-export default Concerts;
+export default News;

@@ -1,21 +1,14 @@
 /* src/App.css */
 .app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  background-color: #f8f8f8; /* Light gray background */
 }
 
-.content {
-  flex: 1;
-  padding: 2rem;
-  background-color: #f8f8f8;
-}
-
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
