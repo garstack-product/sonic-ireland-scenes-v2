@@ -1,11 +1,12 @@
 // src/App.js
+import './App.css'; // Make sure this exists
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Login from './pages/admin/Login';
-import Dashboard from './pages/admin/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Home from './pages/Home/Home.jsx';
+import Login from './pages/admin/Login.jsx';
+import Dashboard from './pages/admin/Dashboard.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

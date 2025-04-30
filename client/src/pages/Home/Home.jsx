@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import EventCard from '../components/EventCard';
-import FilterBar from '../components/FilterBar';
-import SearchBar from '../components/SearchBar';
-import Header from '../components/Header';
+import EventCard from '../../components/EventCard';
+import FilterBar from '../../components/FilterBar';
+import SearchBar from '../../components/SearchBar';
+import Header from '../../components/Header';
 import './Home.css';
   
   

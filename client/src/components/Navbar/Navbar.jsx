@@ -1,8 +1,9 @@
 // src/components/Navbar.js
+import './Navbar.css';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaUserCog } from 'react-icons/fa';
-import './Navbar.css';
+
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [click, setClick] = useState(false);
