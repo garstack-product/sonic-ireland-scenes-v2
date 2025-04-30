@@ -1,13 +1,14 @@
 /* src/components/PageLayout.css */
 .page-container {
     width: 100%;
-    padding: 2rem;
-    background-color: white;
-    min-height: calc(100vh - 80px); /* Full height minus navbar */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
   }
   
-  @media (min-width: 1200px) {
-    .page-container {
-      padding: 2rem calc((100vw - 1200px) / 2);
-    }
+  .page-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
   }

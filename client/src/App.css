@@ -1,20 +1,25 @@
 /* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .app {
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #f8f8f8;
 }
 
-/* Makes content take full width */
 .content {
+  flex: 1;
   width: 100%;
-  max-width: none;
-  padding: 0;
-}
-
-/* Reset default body margin */
-body {
-  margin: 0;
-  padding: 0;
 }

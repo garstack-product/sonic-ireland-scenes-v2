@@ -1,0 +1,53 @@
+/* src/components/ConcertCard/ConcertCard.css */
+.concert-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .concert-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .concert-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .concert-details {
+    padding: 1rem;
+  }
+  
+  .concert-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .concert-details p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .concert-details .date {
+    color: #4a6fa5;
+    font-weight: 500;
+  }
+  
+  .cta-button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #3a5a8f;
+  }

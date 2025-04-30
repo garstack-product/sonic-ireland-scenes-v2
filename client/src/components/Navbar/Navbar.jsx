@@ -1,5 +1,5 @@
 // src/components/Navbar/Navbar.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Added useEffect here
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import './Navbar.css';
@@ -44,20 +44,17 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Mobile Menu Icon */}
-        <div className="menu-icon" onClick={toggleMenu}>
+        <Link to="/" className="navbar-logo">
+          Sonic Ireland Scenes
+        </Link>
+        
+        <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
 
-        {/* Logo */}
-        <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          Sonic Ireland Scenes
-        </Link>
-
-        {/* Desktop Menu */}
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMenu}>
+            <Link to="/" className="nav-links" onClick={() => setIsOpen(false)}>
               Home
             </Link>
           </li>
