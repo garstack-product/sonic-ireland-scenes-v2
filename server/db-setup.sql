@@ -1,14 +1,15 @@
+-- File: server/setup_db.sql
 CREATE TABLE IF NOT EXISTS events (
-  id VARCHAR(255) PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  date TIMESTAMP WITH TIME ZONE NOT NULL,
-  venue VARCHAR(255) NOT NULL,
-  city VARCHAR(100) NOT NULL,
-  country VARCHAR(100) NOT NULL,
-  image_url VARCHAR(255),
-  ticket_url VARCHAR(255) NOT NULL,
-  genre VARCHAR(100),
-  last_updated TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  event_id VARCHAR(255) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  url TEXT NOT NULL,
+  start_date TIMESTAMP WITH TIME ZONE NOT NULL,
+  end_date TIMESTAMP WITH TIME ZONE,
+  venue TEXT,
+  image_url TEXT,
+  classification TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_events_date ON events(date);
