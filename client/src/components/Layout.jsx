@@ -1,6 +1,6 @@
 // src/components/Layout.jsx
 import React from 'react';
-import './PageLayout.css';
+import '../pages/PageLayout.css';
 
 const Layout = ({ children }) => {
   return (

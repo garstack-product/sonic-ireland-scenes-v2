@@ -1,37 +1,35 @@
 // src/App.js
-import './App.css'; // Make sure this exists
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Home from './pages/Home/Home.jsx';
-import Login from './pages/admin/Login.jsx';
-import Dashboard from './pages/admin/Dashboard.jsx';
-import ProtectedRoute from './components/ProtectedRoute.jsx';
+import Gallery from './pages/Gallery.jsx';
+import About from './pages/About.jsx';
+import News from './pages/News.jsx';
+import ListingsConcerts from './pages/listings/Concerts.jsx';
+import ListingsFestivals from './pages/listings/Festivals.jsx';
+import ListingsAnnounced from './pages/listings/JustAnnounced.jsx';
+import ListingsMap from './pages/listings/Map.jsx';
+import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Add other public routes here */}
-        
-        {/* Admin Routes */}
-        <Route path="/admin/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          {/* Add other protected routes here */}
-        </Route>
-      </Routes>
+      <div className="app">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/listings/concerts" element={<ListingsConcerts />} />
+            <Route path="/listings/festivals" element={<ListingsFestivals />} />
+            <Route path="/listings/just-announced" element={<ListingsAnnounced />} />
+            <Route path="/listings/map" element={<ListingsMap />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }

@@ -1,35 +1,21 @@
+/* src/App.css */
 .app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-header {
-  background: #333;
-  color: white;
-  padding: 1rem;
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
-}
-
-footer {
-  background: #333;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-.app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.main-content {
+.content {
   flex: 1;
   padding: 2rem;
   background-color: #f8f8f8;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
