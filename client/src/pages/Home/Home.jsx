@@ -3,7 +3,10 @@ import React from 'react';
 import './../../components/PageLayout.css';
 
 
-// src/pages/Home/Home.jsx
 export default function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <div className="home">
+      <h1>Welcome to Sonic Ireland Scenes</h1>
+    </div>
+  );
 }
