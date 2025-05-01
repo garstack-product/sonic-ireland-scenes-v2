@@ -2,14 +2,12 @@
 import pg from 'pg';
 const { Pool } = pg;
 
-// Create a new pool instance
 const pool = new Pool({
-  user: 'dirtybootsuser',
-  host: 'localhost',
-  database: 'gotdirtyboots',
-  password: 'simplepass',
-  port: 5432,
+  user: process.env.DB_USER || 'dirtybootsuser',
+  host: process.env.DB_HOST || 'localhost',
+  database: process.env.DB_NAME || 'gotdirtyboots',
+  password: process.env.DB_PASSWORD || 'simplepass',
+  port: process.env.DB_PORT || 5432,
 });
 
-// Export the pool directly
-export { pool };
+export default pool;

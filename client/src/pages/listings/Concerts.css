@@ -5,68 +5,27 @@
   margin: 0 auto;
 }
 
-.concerts-page h1 {
-  margin-bottom: 2rem;
-  color: #1a1a1a;
-  font-size: 2rem;
-  text-align: center;
-}
-
 .concerts-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-/* Desktop - 5 columns */
-.concerts-grid.desktop {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-/* Tablet - 3 columns */
-.concerts-grid.tablet {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-/* Mobile - 1 column */
-.concerts-grid.mobile {
-  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
 }
 
 .load-more {
   display: block;
-  margin: 3rem auto;
-  padding: 1rem 2rem;
+  margin: 2rem auto;
+  padding: 0.75rem 1.5rem;
   background-color: #4a6fa5;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  min-width: 200px;
-}
-
-.load-more:hover {
-  background-color: #3a5a8f;
-  transform: translateY(-2px);
+  font-size: 1rem;
 }
 
 .loading, .error {
   text-align: center;
   padding: 2rem;
   font-size: 1.2rem;
-  margin: 2rem auto;
-  max-width: 800px;
-}
-
-.loading {
-  color: #4a6fa5;
-}
-
-.error {
-  color: #d32f2f;
-  background: #ffebee;
-  border-radius: 8px;
-  border-left: 4px solid #d32f2f;
 }

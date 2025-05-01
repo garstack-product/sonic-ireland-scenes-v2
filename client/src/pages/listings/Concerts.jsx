@@ -1,28 +1,22 @@
 // src/pages/listings/Concerts.jsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ConcertCard from '../../components/ConcertCard/ConcertCard';
 import './Concerts.css';
+import axios from 'axios';
 
 const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(50); // Start with 50 for desktop
-  const [screenSize, setScreenSize] = useState('desktop');
-  const navigate = useNavigate();
+  const [visibleCount, setVisibleCount] = useState(30); // Start with 30 items
 
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
-        const response = await fetch('/api/concerts');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setConcerts(data);
+        const response = await axios.get('http://localhost:5000/api/concerts');
+        setConcerts(response.data);
       } catch (err) {
-        console.error('Fetch error:', err);
+        console.error('API Error:', err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -32,32 +26,8 @@ const Concerts = () => {
     fetchConcerts();
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width >= 1024) {
-        setScreenSize('desktop');
-        setVisibleCount(50); // 10 rows x 5 columns
-      } else if (width >= 768) {
-        setScreenSize('tablet');
-        setVisibleCount(30); // 10 rows x 3 columns
-      } else {
-        setScreenSize('mobile');
-        setVisibleCount(30); // 30 rows x 1 column
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const loadMore = () => {
-    setVisibleCount(prev => {
-      if (screenSize === 'desktop') return prev + 50;
-      if (screenSize === 'tablet') return prev + 30;
-      return prev + 30; // mobile
-    });
+    setVisibleCount(prev => prev + 30);
   };
 
   if (loading) return <div className="loading">Loading concerts...</div>;
@@ -66,13 +36,9 @@ const Concerts = () => {
   return (
     <div className="concerts-page">
       <h1>Upcoming Concerts</h1>
-      <div className={`concerts-grid ${screenSize}`}>
+      <div className="concerts-grid">
         {concerts.slice(0, visibleCount).map(concert => (
-          <ConcertCard 
-            key={concert.id} 
-            concert={concert}
-            onClick={() => navigate(`/concert/${concert.id}`)}
-          />
+          <ConcertCard key={concert.id} concert={concert} />
         ))}
       </div>
       {visibleCount < concerts.length && (
