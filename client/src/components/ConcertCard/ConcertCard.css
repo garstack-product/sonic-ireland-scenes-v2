@@ -1,53 +1,106 @@
 /* src/components/ConcertCard/ConcertCard.css */
 .concert-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .concert-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .concert-image img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .concert-details {
-    padding: 1rem;
-  }
-  
-  .concert-details h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
-  }
-  
-  .concert-details p {
-    margin: 0.3rem 0;
-    font-size: 0.9rem;
-  }
-  
-  .concert-details .date {
-    color: #4a6fa5;
-    font-weight: 500;
-  }
-  
-  .cta-button {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    background-color: #4a6fa5;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #3a5a8f;
-  }
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.concert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.concert-image {
+  position: relative;
+  height: 200px;
+}
+
+.concert-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.concert-details {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.concert-details h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+}
+
+.date-venue {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.date {
+  color: #4a6fa5;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.venue {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.description {
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  font-weight: bold;
+  color: #1a1a1a;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  padding: 0.6rem 1rem;
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.cta-button:hover {
+  background-color: #3a5a8f;
+}

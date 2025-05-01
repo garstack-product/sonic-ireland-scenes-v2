@@ -2,47 +2,70 @@
 import React, { useState, useEffect } from 'react';
 import ConcertCard from '../../components/ConcertCard/ConcertCard';
 import './Concerts.css';
-
-// Mock data - replace with your API call
-const mockConcerts = Array.from({ length: 50 }, (_, i) => ({
-  id: i + 1,
-  title: `Concert ${i + 1}`,
-  date: new Date(Date.now() + i * 86400000).toLocaleDateString(),
-  venue: `Venue ${(i % 5) + 1}`,
-  price: `€${20 + (i % 10) * 5}`,
-  imageUrl: `https://picsum.photos/300/200?random=${i}`
-}));
+import axios from 'axios';
 
 const Concerts = () => {
-  const [visibleConcerts, setVisibleConcerts] = useState(12);
-  const [isMobile, setIsMobile] = useState(false);
+  const [concerts, setConcerts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(50); // Start with 50 for desktop
+  const [screenSize, setScreenSize] = useState('desktop');
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const fetchConcerts = async () => {
+      try {
+        const response = await axios.get('/api/concerts');
+        setConcerts(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
+
+    fetchConcerts();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setScreenSize('desktop');
+        setVisibleCount(50); // 10 rows x 5 columns
+      } else if (width >= 768) {
+        setScreenSize('tablet');
+        setVisibleCount(30); // 10 rows x 3 columns
+      } else {
+        setScreenSize('mobile');
+        setVisibleCount(30); // 30 rows x 1 column
+      }
     };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const loadMore = () => {
-    setVisibleConcerts(prev => prev + 12);
+    setVisibleCount(prev => {
+      if (screenSize === 'desktop') return prev + 50;
+      if (screenSize === 'tablet') return prev + 30;
+      return prev + 30; // mobile
+    });
   };
+
+  if (loading) return <div className="loading">Loading concerts...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
 
   return (
     <div className="concerts-page">
       <h1>Upcoming Concerts</h1>
-      <div className={`concerts-grid ${isMobile ? 'mobile' : ''}`}>
-        {mockConcerts.slice(0, visibleConcerts).map(concert => (
+      <div className={`concerts-grid ${screenSize}`}>
+        {concerts.slice(0, visibleCount).map(concert => (
           <ConcertCard key={concert.id} concert={concert} />
         ))}
       </div>
-      {visibleConcerts < mockConcerts.length && (
+      {visibleCount < concerts.length && (
         <button className="load-more" onClick={loadMore}>
           Show More
         </button>
