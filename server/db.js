@@ -4,10 +4,10 @@ const { Pool } = pg;
 
 // Create a new pool instance
 const pool = new Pool({
-  user: 'your_db_username',
+  user: 'dirtybootsuser',
   host: 'localhost',
-  database: 'sonic_ireland',
-  password: 'your_db_password',
+  database: 'gotdirtyboots',
+  password: 'simplepass',
   port: 5432,
 });
 

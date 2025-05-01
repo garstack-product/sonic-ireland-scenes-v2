@@ -6,11 +6,11 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM concerts');
+    const { rows } = await pool.query('SELECT * FROM events');
     res.json(rows);
   } catch (err) {
     console.error('Database error:', err);
-    res.status(500).json({ error: 'Failed to fetch concerts' });
+    res.status(500).json({ error: 'Failed to fetch events' });
   }
 });
 
