@@ -1,6 +1,6 @@
-/// src/pages/listings/Concerts.jsx
+// src/pages/listings/Concerts.jsx
 import React, { useState, useEffect } from 'react';
-import api from '../../api/api.js';
+import { useNavigate } from 'react-router-dom';
 import ConcertCard from '../../components/ConcertCard/ConcertCard';
 import './Concerts.css';
 
@@ -8,38 +8,22 @@ const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(50);
+  const [visibleCount, setVisibleCount] = useState(50); // Start with 50 for desktop
   const [screenSize, setScreenSize] = useState('desktop');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
-        const response = await api.get('/concerts');
-        
-        // Additional success check
-        if (response.status !== 200) {
-          throw new Error(`Request failed with status ${response.status}`);
+        const response = await fetch('/api/concerts');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
-        // Verify data structure
-        if (!Array.isArray(response.data)) {
-          throw new Error('Invalid data format received from API');
-        }
-
-        setConcerts(response.data);
-        setError(null);
+        const data = await response.json();
+        setConcerts(data);
       } catch (err) {
-        // Enhanced error logging
-        console.error('API Error Details:', {
-          message: err.message,
-          config: err.config,
-          response: err.response?.data,
-          status: err.response?.status
-        });
-        
-        setError(err.response?.data?.message || 
-                err.message || 
-                'Failed to load concerts. Please try again later.');
+        console.error('Fetch error:', err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -47,7 +31,6 @@ const Concerts = () => {
 
     fetchConcerts();
   }, []);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -85,7 +68,11 @@ const Concerts = () => {
       <h1>Upcoming Concerts</h1>
       <div className={`concerts-grid ${screenSize}`}>
         {concerts.slice(0, visibleCount).map(concert => (
-          <ConcertCard key={concert.id} concert={concert} />
+          <ConcertCard 
+            key={concert.id} 
+            concert={concert}
+            onClick={() => navigate(`/concert/${concert.id}`)}
+          />
         ))}
       </div>
       {visibleCount < concerts.length && (

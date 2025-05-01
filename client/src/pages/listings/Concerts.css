@@ -1,7 +1,7 @@
 /* src/pages/listings/Concerts.css */
 .concerts-page {
   padding: 2rem;
-  max-width: 1600px; /* Wider container */
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -9,6 +9,7 @@
   margin-bottom: 2rem;
   color: #1a1a1a;
   font-size: 2rem;
+  text-align: center;
 }
 
 .concerts-grid {
@@ -51,7 +52,6 @@
   transform: translateY(-2px);
 }
 
-/* Loading and error states */
 .loading, .error {
   text-align: center;
   padding: 2rem;
@@ -70,14 +70,3 @@
   border-radius: 8px;
   border-left: 4px solid #d32f2f;
 }
-  
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    .concerts-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .concert-card {
-      margin-bottom: 1.5rem;
-    }
-  }
